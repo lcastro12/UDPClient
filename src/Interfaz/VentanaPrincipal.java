@@ -1,6 +1,7 @@
 package Interfaz;
 
 import java.awt.BorderLayout;
+import mundo.*;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -11,14 +12,17 @@ import javax.swing.UIManager;
 
 public class VentanaPrincipal extends JFrame {
 	
+	private UDPClient client;
+	private PanelConexion panelConexion;
+	private PanelDescarga panelDescarga;
 	
 	 public VentanaPrincipal( )
 	    {
 	        setLayout( new GridLayout(2,1 ) );
 
-	        PanelConexion panelConexion = new PanelConexion( this );
+	        panelConexion = new PanelConexion( this );
 	        add( panelConexion);
-	        PanelDescarga panelDescarga = new PanelDescarga( this );
+	        panelDescarga = new PanelDescarga( this );
 	        add(panelDescarga);
 	       
 
@@ -30,6 +34,18 @@ public class VentanaPrincipal extends JFrame {
 	        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 	    }
+	 
+	 public UDPClient darCliente(){
+		 return client;
+	 }
+	 
+	 public void inciarEnvio(){
+		 int puerto = panelConexion.darPuerto();
+		 String IP = panelConexion.darIp();
+		 int objetos = panelDescarga.darObjects();
+		 client = new UDPClient(this,puerto,IP,objetos);
+		 
+	 }
 
 	
 	public static void main( String[] args )

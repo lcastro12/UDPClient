@@ -36,6 +36,15 @@ public class PanelConexion extends JPanel {
         
 	}
 	
+	public String darIp(){
+		return conexion.getText();
+	}
+	
+	public int darPuerto(){
+		String puerto= estadoC.getText();
+		return Integer.parseInt(puerto);
+	}
+	
 
 
 }

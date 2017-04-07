@@ -38,6 +38,12 @@ public class PanelDescarga extends JPanel implements ActionListener {
 	        aceptar.addActionListener(this);
 	        add(aceptar);
 	    }
+	    
+	    public int darObjects(){
+	    	String num = conexion.getText();
+	    	numero = Integer.parseInt(num);
+	    	return numero;
+	    }
 
 
 	    public void actionPerformed( ActionEvent evento )
@@ -49,7 +55,7 @@ public class PanelDescarga extends JPanel implements ActionListener {
 	        }
 	        if( comando.equals( ENVIAR ) )
 	        {
-	            
+	            principal.inciarEnvio();
 	        }
 	      
 	    }
